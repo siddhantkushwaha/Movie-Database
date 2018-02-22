@@ -1,3 +1,16 @@
+<?php 
+    require_once('../functions/functions.php');
+    $r = $functions->show_movies();
+
+    if(@$_POST["ratingList"])
+    {
+        echo $_POST["ratingList"];
+        $r = $functions->sortMovieAccordingToRatings($_POST["ratingList"]);
+    }
+    else{
+        echo "FALSE";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,9 +82,9 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Ratings
                         </a>
-                        <div class="dropdown-menu ratings-dyn" aria-labelledby="navbarDropdown">
+                        <form action="" method="POST" name="ratingSortForm"><div class="dropdown-menu ratings-dyn" aria-labelledby="navbarDropdown" id="ratingsDropdown">
                           
-                        </div>
+                        </div></form>
                       </li>
                       <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,34 +126,23 @@
 
       <div class="content">
 
-        <div class="contenrt-inner">
-            <div class="card my-3" style="width: 50rem;">
-                    <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/en/e/ed/Wonder_Woman_%282017_film%29.jpg" alt="Card image cap">
-                    <div class="body-card">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card my-3" style="width: 50rem;">
-                        <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/en/e/ed/Wonder_Woman_%282017_film%29.jpg" alt="Card image cap">
-                        <div class="body-card">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-
+        <div class="content-inner">
+            <?php if($r) { ?>
+                <?php while($data = $r->fetch_assoc()) { ?>
                     <div class="card my-3" style="width: 50rem;">
-                            <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/en/e/ed/Wonder_Woman_%282017_film%29.jpg" alt="Card image cap">
-                            <div class="body-card">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                </div>
+                    <img class="card-img-top" src="<?php echo $data["cover_link"] ?>" alt="Card image cap">
+                    <div class="body-card">
+                        <h5 class="card-title"><?php echo $data["movie_name"] ?></h5>
+                        <p class="card-text" style="text-align:justify;";><?php echo $data["synopsis"] ?></p>
+                        <a href="<?php echo $data["torrent_link"] ?>" class="btn btn-primary">Download Torrent</a>
+                        <a href="#" class="btn btn-success" disabled>Rating - <?php echo $data["rating"] ?></a>
+                        <!-- <a href="#" class="btn btn-warning" disabled>Gross - $<?php echo $data["gross"] ?> </a> -->
+                        <a href="#" class="btn btn-warning" disabled>Year - <?php echo $data["year"] ?></a>
+                    </div>
+                    </div>
+                <?php } } else {  ?> No Movies <?php } ?>
+        </div>
+
       </div>
 
       
@@ -150,9 +152,21 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script>
+    function ratingFormSubmit()
+    {
+        document.ratingSortForm.submit();
+    }
 const ratings = document.querySelector('.ratings-dyn')
-const rangeRate = Array.from({ length: 10 }, (_, i) => Math.abs(10-i)).map(i => `<a class="dropdown-item" href="#">${i}</a>`).join('')
-ratings.innerHTML = rangeRate
+/*const rangeRate = '<select name="ratingList">';
+rangeRate += Array.from({ length: 10 }, (_, i) => Math.abs(10-i)).map(i => `<option class="dropdown-item" href="#" onClick="ratingFormSubmit()">${i}</option>`).join('')
+rangeRate += '</select>';*/
+
+var rangeRate = '<select name="ratingList" onChange="ratingFormSubmit()">';
+for(i = 1; i<=10; i++)
+    rangeRate+='<option value="'+i+'" class="dropdown-item">'+i+'</option>';
+rangeRate += '</select>';
+
+document.getElementById('ratingsDropdown').innerHTML = rangeRate;
 const gens = ['love', 'comedy', 'action', 'adventure', 'horror', 'thriller', 'crime'].map(i => `<a class="dropdown-item" href="#">${i}</a>`).join('')
 const $gens = document.querySelector('.genres')
 $gens.innerHTML = gens
