@@ -10,7 +10,9 @@
     if(@$_POST["genreList"])
     {
         // echo $_POST["genreList"];
+        //echo "function";
         $r = $functions->sortMovieAccordingToGenres($_POST["genreList"]);
+        //echo $r;
     }
 ?>
 <!DOCTYPE html>
@@ -68,7 +70,6 @@
                             <p>
                                 Contributor:&nbsp;&nbsp;<?php echo $data["contributor"]; ?><br>
                                 Rating:&nbsp;&nbsp;<?php echo $data["rating"]; ?>
-                                Genre:&nbsp;&nbsp;<?php echo $data["genre"]; ?>
                             </p>
                             <div class="text-right">
                                 <a href="<?php echo $data["torrent_link"] ?>" class="btn btn-primary">Download Torrent</a>

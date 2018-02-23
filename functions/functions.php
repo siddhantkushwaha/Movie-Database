@@ -36,9 +36,15 @@ class Functions
     }
     public function sortMovieAccordingToGenres($genre)
     {
-        $res = $this->db->query("SELECT * FROM Movies WHERE rating>='$genre' ");
-            if($res->num_rows > 0)
+        //echo "query";
+        $res = $this->db->query("SELECT * from movies where mid in 
+                                        (select mid from movie_has_genres where gid in 
+                                                (select gid from genres where genre_type='$genre'));");
+        // $res = $this->db->query("select * from movies where mid=10000"); 
+        //echo "first";
+        if($res->num_rows > 0)
             {
+                echo "hello";
                 return $res;
             }
             else

@@ -61,7 +61,7 @@
                     <ul class="navbar-nav" style="grid-area: list;">
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          genres
+                          Genres
                         </a>
                         <form action="" method="POST" name="genreSortForm">
                           <div class="dropdown-menu genres" aria-labelledby="navbarDropdown" id="genreDropdown">
@@ -121,7 +121,7 @@ document.getElementById('ratingsDropdown').innerHTML = rangeRate;
 
 const gens = ['Drama','Sci-Fi','Action','Family','Documentary','Music','War','Romance','Animation','Western','Thriller','Musical','Sport','Comedy','News','Adventure','Crime','Fantasy','Horror','Mystery','History','Film-Noir','Biography']
 
-var rangeRate2 = '<select style="background: #fff; border: none; width: 100%;" name="genreList" onChange="ratingFormSubmit()">';
+var rangeRate2 = '<select style="background: #fff; border: none; width: 100%;" name="genreList" onChange="genreFormSubmit()">';
 for(i = 0; i<=23; i++)
     rangeRate2+='<option value="'+gens[i]+'" class="dropdown-item">'+gens[i]+'</option>';
 rangeRate2 += '</select>';
