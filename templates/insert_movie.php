@@ -45,7 +45,7 @@
 </head>
 <body>
 <nav style="background: linear-gradient(to right, #232526, #414345); text-align: center;">
-    <a style="font-size: 40px; color: #fff;" href="/index.php">Navbar</a>
+    <a style="font-size: 40px; color: #fff;" href="/index.php">Movie Base</a>
 </nav>
     <div class="inner">
         
@@ -54,40 +54,52 @@
     <div class="inner-inner my-5">
         <div style="display: flex; justify-content: center;">        
         <div class="form">
-        <h1 class="display-4 text-center" style="color: #fff">Hello, world!</h1>        
-        <form>
+        <h1 class="display-4 text-center" style="color: #fff">Movie Details</h1>        
+        <form method="post" action="insert.php">
             <div class="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <label for="exampleFormControlInput1">Movie Name :</label>
+                <input type="text" class="form-control"  name="movie_name" placeholder="Enter movie name.">
             </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Example select</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+            <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Synopsis :</label>
+                    <textarea class="form-control" name="synopsis" placeholder="Enter brief description of the movie." rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Year of Release :</label>
+                    <select class="form-control" name="year" id="iter">
+                        
                     </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleFormControlSelect2">Example multiple select</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+            </div>   
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Rating :</label>
+                    <select class="form-control" name="rating" id="iter2">
+                        
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-            </form>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Duration :</label>
+                <input type="text" class="form-control"  name="duration" placeholder="In minutes">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Cover Link :</label>
+                <input type="text" class="form-control"  name="cover_link" placeholder="Link for movie poster">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Torrent Link :</label>
+                <input type="text" class="form-control"  name="torrent_link" placeholder="Torrent link for movie">
+            </div>  
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-success mb-2 " >Submit</button>
+            </div> 
+        </form>
             </div>
         </div>
     </div>
+    <script>
+        document.querySelector('#iter').innerHTML = Array.from({ length: 69 }, (_, i) => 2018-i).map(e => `<option>${e}</option>`).join('')
+
+        document.querySelector('#iter2').innerHTML = Array.from({ length: 10 }, (_, i) => 10-i).map(e => `<option>${e}</option>`).join('')
+        
+    </script>
 </body>
 </html>
