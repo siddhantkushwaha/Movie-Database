@@ -29,7 +29,7 @@
     <a class="navbar-brand" href="/">Movie Base</a>
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%;display: grid !important; grid-template-columns: 75% 25%;padding-right:7%;">
-    <form class="form-inline my-2 my-lg-0" method="POST" action="query.php">
+    <form class="form-inline my-2 my-lg-0" method="GET" action="query.php">
         <input class="form-control mr-sm-2" style="width: 500px;" type="search" placeholder="Search By" aria-label="Search By" name="query">
         <input name="search_text" class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">
     </form>
@@ -62,31 +62,28 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Genres
                         </a>
-                <form action="" method="POST" name="genreSortForm">
-                    <div class="dropdown-menu genres" aria-labelledby="navbarDropdown" id="genreDropdown">
-
-                    </div>
+                <form action="/index.php" method="GET" name="genreSortForm">
+                    <div class="dropdown-menu genres" aria-labelledby="navbarDropdown" id="genreDropdown"></div>
                 </form>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Ratings
                           </a>
-                <form action="" method="POST" name="ratingSortForm">
-                    <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="ratingsDropdown">
-                    </div>
+                <form action="/index.php" method="GET" name="ratingSortForm">
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="ratingsDropdown"></div>
                 </form>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Year
                             </a>
-                <form action="" method="POST" name="yearSortForm">
-                    <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="yearDropdown">
-                    </div>
+                <form action="/index.php" method="GET" name="yearSortForm">
+                    <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="yearDropdown"></div>
                 </form>
             </li>
         </ul>
+    </div>
 </nav>
 
 <script>

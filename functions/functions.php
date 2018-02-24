@@ -12,7 +12,7 @@ class Functions
     
     public function show_movies()
     {
-        $res = $this->db->query("SELECT * FROM Movies where mid <= 5");
+        $res = $this->db->query("SELECT * FROM Movies ORDER BY RAND() LIMIT 5");
         if ($res->num_rows > 0) {
             return $res;
         } else {

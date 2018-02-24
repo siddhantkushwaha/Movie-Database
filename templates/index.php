@@ -2,14 +2,14 @@
     require_once('navbar.php');
     $r = $functions->show_movies();
 
-    if(@$_POST["ratingList"]) {
-        $r = $functions->sortMovieAccordingToRatings($_POST["ratingList"]);
+    if(@$_GET["ratingList"]) {
+        $r = $functions->sortMovieAccordingToRatings($_GET["ratingList"]);
     }
-    if(@$_POST["genreList"]) {
-        $r = $functions->sortMovieAccordingToGenres($_POST["genreList"]);
+    if(@$_GET["genreList"]) {
+        $r = $functions->sortMovieAccordingToGenres($_GET["genreList"]);
     }
-    if(@$_POST["yearList"]) {
-        $r = $functions->sortMovieAccordingToYear($_POST["yearList"]);
+    if(@$_GET["yearList"]) {
+        $r = $functions->sortMovieAccordingToYear($_GET["yearList"]);
     }
 ?>
 <!DOCTYPE html>

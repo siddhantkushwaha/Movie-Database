@@ -1,9 +1,9 @@
 <?php 
     require_once('navbar.php');
-    if(@$_POST["search_text"]){
-        $r_movies = $functions->query_movies(@$_POST["query"]);
-        $r_actors = $functions->query_actors(@$_POST["query"]);
-        $r_directors = $functions->query_directors(@$_POST["query"]);
+    if(@$_GET["search_text"]){
+        $r_movies = $functions->query_movies(@$_GET["query"]);
+        $r_actors = $functions->query_actors(@$_GET["query"]);
+        $r_directors = $functions->query_directors(@$_GET["query"]);
     }
     else {
         $r_actors = NULL;
