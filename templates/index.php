@@ -72,7 +72,7 @@
                                 Contributor:&nbsp;&nbsp;<?php echo $data["contributor"]; ?>                              
                             </p>
                             <div class="text-right">
-                                <a href="#" id="<?php echo $data["mid"]?>" class="btn btn-success subRe">Movie Crew</a>
+                                <a href="crew.php?mid=<?php echo $data["mid"]?>" class="btn btn-success subRe">Movie Crew</a>
                                 <a href="<?php echo $data["torrent_link"] ?>" class="btn btn-primary">Download Torrent</a>
                                 <a href="#" class="btn btn-success" disabled>Rating - <?php echo $data["rating"] ?></a>
                                 <a href="#" class="btn btn-warning" disabled>Year - <?php echo $data["year"] ?></a>

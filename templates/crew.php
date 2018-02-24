@@ -1,6 +1,6 @@
 <?php 
-    if(@$_POST["mid1"])
+    if(@$_GET["mid"])
     {
-        echo $_POST["mid1"];
+        echo "mid = ", @$_GET["mid"];
     }
 ?>
