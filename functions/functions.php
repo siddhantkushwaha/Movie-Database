@@ -99,5 +99,30 @@ class Functions
         else
             return FALSE;
     }
+
+    public function query_movies($query) {
+        $str = '%'.$query.'%';
+        $res = $this->db->query("select * from movies where movie_name LIKE '$str'");
+        if ($res->num_rows > 0)
+            return $res;
+        else
+            return FALSE;
+    }
+    public function query_actors($query) {
+        $str = '%'.$query.'%';
+        $res = $this->db->query("select * from Actors where actor_name LIKE '$str'");
+        if ($res->num_rows > 0)
+            return $res;
+        else
+            return FALSE;
+    }
+    public function query_directors($query) {
+        $str = '%'.$query.'%';
+        $res = $this->db->query("select * from Directors where dir_name LIKE '$str'");
+        if ($res->num_rows > 0)
+            return $res;
+        else
+            return FALSE;
+    }
 }
 $functions = new Functions();

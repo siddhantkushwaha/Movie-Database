@@ -1,5 +1,4 @@
 <?php 
-
     require_once('../functions/functions.php');
 
     $movie_name = $_POST['movie_name'];
@@ -10,8 +9,5 @@
     $duration = $_POST['duration'];
     $cover_link = $_POST['cover_link'];
     $torrent_link = $_POST['torrent_link'];
-    
     $check = $functions->insert_movie();
-
-    
 ?>
