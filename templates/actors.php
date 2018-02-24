@@ -1,12 +1,6 @@
 <?php 
     require_once('navbar.php');
     $r = $functions->show_Actors();
-
-    // if(@$_POST["ratingList"])
-    // {
-    //     echo $_POST["ratingList"];
-    //     $r = $functions->sortMovieAccordingToRatings($_POST["ratingList"]);
-    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,23 +68,5 @@
                     <?php } } else {  ?> No Movies <?php } ?>
             </div>
       </div>
-
-<script>
-    function ratingFormSubmit()
-    {
-        document.ratingSortForm.submit();
-    }
-const ratings = document.querySelector('.ratings-dyn')
-
-var rangeRate = '<select name="ratingList" onChange="ratingFormSubmit()">';
-for(i = 1; i<=10; i++)
-    rangeRate+='<option value="'+i+'" class="dropdown-item">'+i+'</option>';
-rangeRate += '</select>';
-
-document.getElementById('ratingsDropdown').innerHTML = rangeRate;
-const gens = ['love', 'comedy', 'action', 'adventure', 'horror', 'thriller', 'crime'].map(i => `<a class="dropdown-item" href="#">${i}</a>`).join('')
-const $gens = document.querySelector('.genres')
-$gens.innerHTML = gens
-</script>
 </body>
 </html>

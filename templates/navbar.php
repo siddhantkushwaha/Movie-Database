@@ -103,7 +103,7 @@
     }
 
 var rangeRate = '<select style="background: #fff; border: none; width: 100%;" name="ratingList" onChange="ratingFormSubmit()">';
-rangeRate+='<option value="'+"rating"+'" class="dropdown-item">'+"rating"+'</option>';
+rangeRate+='<option value="'+"rating"+'" class="dropdown-item">'+"Rating"+'</option>';
 for(i = 10; i>=1; i--)
     rangeRate+='<option value="'+i+'" class="dropdown-item">'+i+'</option>';
 rangeRate += '</select>';
@@ -112,14 +112,14 @@ document.getElementById('ratingsDropdown').innerHTML = rangeRate;
 const gens = ['Drama','Sci-Fi','Action','Family','Documentary','Music','War','Romance','Animation','Western','Thriller','Musical','Sport','Comedy','News','Adventure','Crime','Fantasy','Horror','Mystery','History','Film-Noir','Biography']
 
 var rangeRate2 = '<select style="background: #fff; border: none; width: 100%;" name="genreList" onChange="genreFormSubmit()">';
-rangeRate2+='<option value="'+"genres"+'" class="dropdown-item">'+"genres"+'</option>';
+rangeRate2+='<option value="'+"genres"+'" class="dropdown-item">'+"Genres"+'</option>';
 for(i = 0; i<=22; i++)
     rangeRate2+='<option value="'+gens[i]+'" class="dropdown-item">'+gens[i]+'</option>';
 rangeRate2 += '</select>';
 document.getElementById('genreDropdown').innerHTML = rangeRate2;
 
 var rangeRate3 = '<select style="background: #fff; border: none; width: 100%;" name="yearList" onChange="yearFormSubmit()">';
-rangeRate3+='<option value="'+"year"+'" class="dropdown-item">'+"year"+'</option>';
+rangeRate3+='<option value="'+"year"+'" class="dropdown-item">'+"Year"+'</option>';
 for(i = 2018; i>=1940; i--)
     rangeRate3+='<option value="'+i+'" class="dropdown-item">'+i+'</option>';
 rangeRate3 += '</select>';
