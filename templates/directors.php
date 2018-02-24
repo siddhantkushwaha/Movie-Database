@@ -57,7 +57,7 @@
                         <div class="my-card" style="width: 100%;">
                                 <img style="width: 100%; height: 100%;"  src="<?php echo $data["img_url"] ?>" alt="Card image cap">
                                 <div style="background: #fff; height: 200px;">
-                                    <h4 class="card-title text-center"><?php echo $data["dir_name"] ?></h4>
+                                    <h4 class="card-title text-center" style="margin-top:10px;"><?php echo $data["dir_name"] ?></h4>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">Birth Date: <?php echo $data["birth_date"] ?></li>
                                         <li class="list-group-item">Birth Place: <?php echo $data["birth_place"] ?></li>
