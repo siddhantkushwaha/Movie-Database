@@ -74,8 +74,7 @@
                           Ratings
                         </a>
                         <form action="" method="POST" name="ratingSortForm">
-                          <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="ratingsDropdown">
-                            
+                          <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="ratingsDropdown">     
                           </div>
                         </form>
                       </li>
@@ -127,6 +126,8 @@ for(i = 0; i<=23; i++)
 rangeRate2 += '</select>';
 document.getElementById('genreDropdown').innerHTML = rangeRate2;
 
+var pag = document.querySelector('.pag');
+if (pag != null)
 document.querySelector('.pag').innerHTML = `<li class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>

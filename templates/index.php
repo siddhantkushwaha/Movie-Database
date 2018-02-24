@@ -2,24 +2,18 @@
     require_once('navbar.php');
     $r = $functions->show_movies();
 
-    if(@$_POST["ratingList"])
-    {
-        // echo $_POST["ratingList"];
+    if(@$_POST["ratingList"]) {
         $r = $functions->sortMovieAccordingToRatings($_POST["ratingList"]);
     }
-    if(@$_POST["genreList"])
-    {
-        // echo $_POST["genreList"];
-        //echo "function";
+    if(@$_POST["genreList"]) {
         $r = $functions->sortMovieAccordingToGenres($_POST["genreList"]);
-        //echo $r;
     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home Page</title>
       <style>
@@ -55,6 +49,7 @@
     body {
         background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     }
+    
     </style>
 </head>
 <body>
@@ -73,6 +68,7 @@
                                 Contributor:&nbsp;&nbsp;<?php echo $data["contributor"]; ?>                              
                             </p>
                             <div class="text-right">
+                                <a href="#" id="<?php echo $data["mid"]?>" class="btn btn-success subRe">Movie Crew</a>
                                 <a href="<?php echo $data["torrent_link"] ?>" class="btn btn-primary">Download Torrent</a>
                                 <a href="#" class="btn btn-success" disabled>Rating - <?php echo $data["rating"] ?></a>
                                 <a href="#" class="btn btn-warning" disabled>Year - <?php echo $data["year"] ?></a>
@@ -89,7 +85,5 @@
                 </nav>  
          </div>
       </div>
-
-
 </body>
 </html>
