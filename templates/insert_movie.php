@@ -1,3 +1,23 @@
+<?php 
+    require_once('../functions/functions.php');
+    if(@$_POST["movie_name"]){
+
+        $movie_name = @$_POST['movie_name'];
+        $synopsis = @$_POST['synopsis'];
+        $rating = $_POST['rating'];
+        $year = $_POST['year'];
+        $gross = $_POST['gross'];
+        $duration = $_POST['duration'];
+        $cover_link = $_POST['cover_link'];
+        $torrent_link = $_POST['torrent_link'];
+        $contributor = $_POST['contributor'];
+
+        $ins = $functions->insert_movie($_POST['movie_name'], $_POST['synopsis'],
+                                            $_POST['rating'], $_POST['year'], $_POST['gross'],
+                                                $_POST['duration'], $_POST['cover_link'],$_POST['torrent_link'],$_POST['contributor']);
+        
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +75,7 @@
         <div style="display: flex; justify-content: center;">        
         <div class="form">
         <h1 class="display-4 text-center" style="color: #fff">Movie Details</h1>        
-        <form method="post" action="insert.php">
+        <form method="post" action="">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Movie Name :</label>
                 <input type="text" class="form-control"  name="movie_name" placeholder="Enter movie name.">
@@ -77,6 +97,10 @@
                     </select>
             </div>
             <div class="form-group">
+                <label for="exampleFormControlInput1">Gross :</label>
+                <input type="text" class="form-control"  name="gross" placeholder="In American dollars($)">
+            </div>
+            <div class="form-group">
                 <label for="exampleFormControlInput1">Duration :</label>
                 <input type="text" class="form-control"  name="duration" placeholder="In minutes">
             </div>
@@ -88,6 +112,10 @@
                 <label for="exampleFormControlInput1">Torrent Link :</label>
                 <input type="text" class="form-control"  name="torrent_link" placeholder="Torrent link for movie">
             </div>  
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Contributor :</label>
+                <input type="text" class="form-control"  name="contributor" placeholder="Submitted name will be publicly visible">
+            </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-success mb-2 " >Submit</button>
             </div> 

@@ -30,7 +30,7 @@
         .body-card {
             padding: 5px;
             display: grid;
-            grid-template-rows: 10% 60% 20% 10%;
+            grid-template-rows: 10% 50% 30% 10%;
         }
         .card {
             display: grid;
@@ -68,8 +68,9 @@
                             <h5 class="card-title"><?php echo $data["movie_name"] ?></h5>
                             <p class="card-text" style="text-align:justify;";><?php echo $data["synopsis"] ?></p>
                             <p>
-                                Contributor:&nbsp;&nbsp;<?php echo $data["contributor"]; ?><br>
-                                Rating:&nbsp;&nbsp;<?php echo $data["rating"]; ?>
+                                Rating:&nbsp;&nbsp;<?php echo $data["rating"]; ?><br>
+                                Gross:&nbsp;&nbsp;<?php echo $data["gross"]; ?><br>
+                                Contributor:&nbsp;&nbsp;<?php echo $data["contributor"]; ?>                              
                             </p>
                             <div class="text-right">
                                 <a href="<?php echo $data["torrent_link"] ?>" class="btn btn-primary">Download Torrent</a>

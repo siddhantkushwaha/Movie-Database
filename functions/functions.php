@@ -76,5 +76,20 @@ class Functions
                 return FALSE;
             }
     }
+    public function insert_movie($movie_name, $synopsis, $rating, $year, $gross, $duration, $cover_link, $torrent_link,$contributor){
+
+        // echo $movie_name, $synopsis, $rating, $year, $gross, $duration, $cover_link, $torrent_link, "detail functions";
+        $res = $this->db->query("INSERT INTO Movies (movie_name,synopsis,rating,year,gross,duration,cover_link,torrent_link,contributor) 
+        VALUES ('$movie_name','$synopsis','$rating','$year','$gross','$duration','$cover_link','$torrent_link','$contributor')");
+        // if($ins->num_rows > 0){
+        //     return $ins;
+        // }
+        // else{
+        //     return FALSE;
+        // }
+        if($res == null)
+            return $this->db->error_get_last;
+        return $res;
+    }
 }
 $functions = new Functions();
