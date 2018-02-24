@@ -64,6 +64,7 @@
                             <p class="card-text" style="text-align:justify;";><?php echo $data["synopsis"] ?></p>
                             <p>
                                 Rating:&nbsp;&nbsp;<?php echo $data["rating"]; ?><br>
+                                Duration:&nbsp;&nbsp;<?php echo $data["duration"]; ?><br>
                                 Gross:&nbsp;&nbsp;<?php echo $data["gross"]; ?><br>
                                 Contributor:&nbsp;&nbsp;<?php echo $data["contributor"]; ?>                              
                             </p>

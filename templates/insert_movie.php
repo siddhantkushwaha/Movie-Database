@@ -78,39 +78,39 @@
         <form method="post" action="">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Movie Name :</label>
-                <input type="text" class="form-control"  name="movie_name" placeholder="Enter movie name.">
+                <input required type="text" class="form-control"  name="movie_name" placeholder="Enter movie name.">
             </div>
             <div class="form-group">
                     <label for="exampleFormControlTextarea1">Synopsis :</label>
-                    <textarea class="form-control" name="synopsis" placeholder="Enter brief description of the movie." rows="3"></textarea>
+                    <textarea required class="form-control" name="synopsis" placeholder="Enter brief description of the movie." rows="3"></textarea>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Year of Release :</label>
-                    <select class="form-control" name="year" id="iter">
+                    <select required class="form-control" name="year" id="iter">
                         
                     </select>
             </div>   
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Rating :</label>
-                    <select class="form-control" name="rating" id="iter2">
+                    <select required class="form-control" name="rating" id="iter2">
                         
                     </select>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Gross :</label>
-                <input type="text" class="form-control"  name="gross" placeholder="In American dollars($)">
+                <input required type="text" class="form-control"  name="gross" placeholder="In American dollars($)">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Duration :</label>
-                <input type="text" class="form-control"  name="duration" placeholder="In minutes">
+                <input required type="text" class="form-control"  name="duration" placeholder="In minutes">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Cover Link :</label>
-                <input type="text" class="form-control"  name="cover_link" placeholder="Link for movie poster">
+                <input required type="text" class="form-control"  name="cover_link" placeholder="Link for movie poster">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Torrent Link :</label>
-                <input type="text" class="form-control"  name="torrent_link" placeholder="Torrent link for movie">
+                <input required type="text" class="form-control"  name="torrent_link" placeholder="Torrent link for movie">
             </div>  
             <div class="form-group">
                 <label for="exampleFormControlInput1">Contributor :</label>
@@ -125,9 +125,7 @@
     </div>
     <script>
         document.querySelector('#iter').innerHTML = Array.from({ length: 69 }, (_, i) => 2018-i).map(e => `<option>${e}</option>`).join('')
-
-        document.querySelector('#iter2').innerHTML = Array.from({ length: 10 }, (_, i) => 10-i).map(e => `<option>${e}</option>`).join('')
-        
+        document.querySelector('#iter2').innerHTML = Array.from({ length: 10 }, (_, i) => 10-i).map(e => `<option>${e}</option>`).join('')  
     </script>
 </body>
 </html>
