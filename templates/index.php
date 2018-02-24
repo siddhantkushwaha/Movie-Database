@@ -8,6 +8,9 @@
     if(@$_POST["genreList"]) {
         $r = $functions->sortMovieAccordingToGenres($_POST["genreList"]);
     }
+    if(@$_POST["yearList"]) {
+        $r = $functions->sortMovieAccordingToYear($_POST["yearList"]);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

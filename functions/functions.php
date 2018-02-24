@@ -52,6 +52,18 @@ class Functions
                 return FALSE;
             }
     }
+    public function sortMovieAccordingToYear($year)
+    {
+        $res = $this->db->query("SELECT * FROM Movies WHERE year='$year' ");
+            if($res->num_rows > 0)
+            {
+                return $res;
+            }
+            else
+            {
+                return FALSE;
+            }
+    }
     public function show_Actors()
     {
         $res = $this->db->query("SELECT actor_name ,birth_date ,birth_place ,img_url FROM Actors where aid <= 5");

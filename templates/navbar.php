@@ -57,7 +57,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
                 
-                  <div class="collapse navbar-collapse" style="display: grid !important; grid-template-areas: '. list .'; grid-gap: 30%;" id="navbarSupportedContent">
+                  <div class="collapse navbar-collapse" style="display: grid !important; grid-template-areas: '. list .'; grid-gap: 41%;" id="navbarSupportedContent">
                     <ul class="navbar-nav" style="grid-area: list;">
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,36 +70,23 @@
                         </form>  
                       </li>
                       <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Ratings
-                        </a>
-                        <form action="" method="POST" name="ratingSortForm">
-                          <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="ratingsDropdown">     
-                          </div>
-                        </form>
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ratings
+                          </a>
+                          <form action="" method="POST" name="ratingSortForm">
+                            <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="ratingsDropdown">     
+                            </div>
+                          </form>
                       </li>
                       <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Dropdown
+                              Year
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                          </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                            </li>
+                            <form action="" method="POST" name="yearSortForm">
+                              <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="yearDropdown">     
+                              </div>
+                            </form>  
+                      </li>   
                     </ul>
       </nav>
 
@@ -111,9 +98,13 @@
     function genreFormSubmit(){
       document.genreSortForm.submit();
     }
+    function yearFormSubmit(){
+      document.yearSortForm.submit();
+    }
 
 var rangeRate = '<select style="background: #fff; border: none; width: 100%;" name="ratingList" onChange="ratingFormSubmit()">';
-for(i = 1; i<=10; i++)
+rangeRate+='<option value="'+"rating"+'" class="dropdown-item">'+"rating"+'</option>';
+for(i = 10; i>=1; i--)
     rangeRate+='<option value="'+i+'" class="dropdown-item">'+i+'</option>';
 rangeRate += '</select>';
 document.getElementById('ratingsDropdown').innerHTML = rangeRate;
@@ -121,10 +112,18 @@ document.getElementById('ratingsDropdown').innerHTML = rangeRate;
 const gens = ['Drama','Sci-Fi','Action','Family','Documentary','Music','War','Romance','Animation','Western','Thriller','Musical','Sport','Comedy','News','Adventure','Crime','Fantasy','Horror','Mystery','History','Film-Noir','Biography']
 
 var rangeRate2 = '<select style="background: #fff; border: none; width: 100%;" name="genreList" onChange="genreFormSubmit()">';
-for(i = 0; i<=23; i++)
+rangeRate2+='<option value="'+"genres"+'" class="dropdown-item">'+"genres"+'</option>';
+for(i = 0; i<=22; i++)
     rangeRate2+='<option value="'+gens[i]+'" class="dropdown-item">'+gens[i]+'</option>';
 rangeRate2 += '</select>';
 document.getElementById('genreDropdown').innerHTML = rangeRate2;
+
+var rangeRate3 = '<select style="background: #fff; border: none; width: 100%;" name="yearList" onChange="yearFormSubmit()">';
+rangeRate3+='<option value="'+"year"+'" class="dropdown-item">'+"year"+'</option>';
+for(i = 2018; i>=1940; i--)
+    rangeRate3+='<option value="'+i+'" class="dropdown-item">'+i+'</option>';
+rangeRate3 += '</select>';
+document.getElementById('yearDropdown').innerHTML = rangeRate3;
 
 var pag = document.querySelector('.pag');
 if (pag != null)

@@ -2,11 +2,11 @@
     require_once('navbar.php');
     $r = $functions->show_Directors();
 
-    if(@$_POST["ratingList"])
-    {
-        echo $_POST["ratingList"];
-        $r = $functions->sortMovieAccordingToRatings($_POST["ratingList"]);
-    }
+    // if(@$_POST["ratingList"])
+    // {
+    //     echo $_POST["ratingList"];
+    //     $r = $functions->sortMovieAccordingToRatings($_POST["ratingList"]);
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
