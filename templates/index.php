@@ -56,6 +56,7 @@
     </style>
 </head>
 <body>
+
       <div class="content">
          <div class="content-inner ">
                <?php if($r) { ?>

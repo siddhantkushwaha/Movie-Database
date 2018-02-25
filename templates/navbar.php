@@ -25,7 +25,6 @@
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary navbar-fixed-top">
-
     <a class="navbar-brand" href="/">Movie Base</a>
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%;display: grid !important; grid-template-columns: 75% 25%;padding-right:7%;">
@@ -53,31 +52,25 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" style="display: grid !important; grid-template-areas: '. list .'; grid-gap: 41%;" id="navbarSupportedContent">
         <ul class="navbar-nav" style="grid-area: list;">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Genres
-                        </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Genres</a>
                 <form action="/index.php" method="GET" name="genreSortForm">
                     <div class="dropdown-menu genres" aria-labelledby="navbarDropdown" id="genreDropdown"></div>
                 </form>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Ratings
-                          </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ratings</a>
                 <form action="/index.php" method="GET" name="ratingSortForm">
                     <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="ratingsDropdown"></div>
                 </form>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Year
-                            </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Year</a>
                 <form action="/index.php" method="GET" name="yearSortForm">
                     <div class="dropdown-menu " aria-labelledby="navbarDropdown" id="yearDropdown"></div>
                 </form>
@@ -98,40 +91,65 @@
       document.yearSortForm.submit();
     }
 
-  var rangeRate = '<select style="background: #fff; border: none; width: 100%;" name="ratingList" onChange="ratingFormSubmit()">';
-  rangeRate+='<option value="'+"rating"+'" class="dropdown-item">'+"Rating"+'</option>';
-  for(i = 10; i>=1; i--)
-      rangeRate+='<option value="'+i+'" class="dropdown-item">'+i+'</option>';
-  rangeRate += '</select>';
-  document.getElementById('ratingsDropdown').innerHTML = rangeRate;
+    var rangeRate = document.createElement("SELECT");
+    rangeRate.setAttribute("style", "background: #fff; border: none; width: 100%;");
+    rangeRate.setAttribute("name", "ratingList");
+    rangeRate.setAttribute("onChange", "ratingFormSubmit()");
+    var opt = document.createElement("OPTION");
+    opt.setAttribute("value", "Rating");
+    opt.setAttribute("class", "dropdown-item");
+    opt.append(document.createTextNode("Rating"));
+    rangeRate.append(opt);
 
-  const gens = ['Drama','Sci-Fi','Action','Family','Documentary','Music','War','Romance','Animation','Western','Thriller','Musical','Sport','Comedy','News','Adventure','Crime','Fantasy','Horror','Mystery','History','Film-Noir','Biography']
+    for(i=10; i>0; i--) {
+            opt = document.createElement("OPTION");
+            opt.setAttribute("value", i);
+            opt.setAttribute("class", "dropdown-item");
+            opt.append(document.createTextNode(i));
+            rangeRate.append(opt);
+    }
+    document.getElementById('ratingsDropdown').append(rangeRate);
 
-  var rangeRate2 = '<select style="background: #fff; border: none; width: 100%;" name="genreList" onChange="genreFormSubmit()">';
-  rangeRate2+='<option value="'+"genres"+'" class="dropdown-item">'+"Genres"+'</option>';
-  for(i = 0; i<=22; i++)
-      rangeRate2+='<option value="'+gens[i]+'" class="dropdown-item">'+gens[i]+'</option>';
-  rangeRate2 += '</select>';
-  document.getElementById('genreDropdown').innerHTML = rangeRate2;
 
-  var rangeRate3 = '<select style="background: #fff; border: none; width: 100%;" name="yearList" onChange="yearFormSubmit()">';
-  rangeRate3+='<option value="'+"year"+'" class="dropdown-item">'+"Year"+'</option>';
-  for(i = 2018; i>=1940; i--)
-      rangeRate3+='<option value="'+i+'" class="dropdown-item">'+i+'</option>';
-  rangeRate3 += '</select>';
-  document.getElementById('yearDropdown').innerHTML = rangeRate3;
+    const gens = ['Drama','Sci-Fi','Action','Family','Documentary','Music','War','Romance','Animation','Western','Thriller',
+    'Musical','Sport','Comedy','News','Adventure','Crime','Fantasy','Horror','Mystery','History','Film-Noir','Biography']
 
-  var pag = document.querySelector('.pag');
-  if (pag != null)
-  document.querySelector('.pag').innerHTML = `<li class="page-item">
-                          <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                              <span class="sr-only">Previous</span>
-                          </a>
-                          </li>` + `<li class="page-item active"><a class="page-link" href="#">1</a></li>` + Array.from({ length: 19 }, (_, i) => i+2).map(i => `<li class="page-item"><a class="page-link" href="${i}">${i}</a></li>`).join('') + `<li class="page-item">
-                          <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                              <span class="sr-only">Next</span>
-                          </a>
-                          </li>`
+    var geneDrop = document.createElement("SELECT");
+    geneDrop.setAttribute("style", "background: #fff; border: none; width: 100%;");
+    geneDrop.setAttribute("name", "genreList");
+    geneDrop.setAttribute("onChange", "genreFormSubmit()");
+    opt = document.createElement("OPTION");
+    opt.setAttribute("value", "Genres");
+    opt.setAttribute("class", "dropdown-item");
+    opt.append(document.createTextNode("Genres"));
+    geneDrop.append(opt);
+
+    for(i=0; i<=22; i++) {
+            opt = document.createElement("OPTION");
+            opt.setAttribute("value", gens[i]);
+            opt.setAttribute("class", "dropdown-item");
+            opt.append(document.createTextNode(gens[i]));
+            geneDrop.append(opt);
+    }
+    document.getElementById('genreDropdown').append(geneDrop);
+
+    var yearDrop = document.createElement("SELECT");
+    yearDrop.setAttribute("style", "background: #fff; border: none; width: 100%;");
+    yearDrop.setAttribute("name", "yearList");
+    yearDrop.setAttribute("onChange", "yearFormSubmit()");
+    opt = document.createElement("OPTION");
+    opt.setAttribute("value", "Year");
+    opt.setAttribute("class", "dropdown-item");
+    opt.append(document.createTextNode("Year"));
+    yearDrop.append(opt);
+
+    for(i=2018; i>=1950; i--) {
+            opt = document.createElement("OPTION");
+            opt.setAttribute("value", i);
+            opt.setAttribute("class", "dropdown-item");
+            opt.append(document.createTextNode(i));
+            yearDrop.append(opt);
+    }
+    document.getElementById('yearDropdown').append(yearDrop);
+
 </script>
