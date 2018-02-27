@@ -3,15 +3,15 @@ require_once("con.php");
 session_start();
 class Functions
 {
-    public function __construct()
-    {
+    public function __construct() {
+        
         $connect  = new Config();
         $this->db = $connect->connection();
         date_default_timezone_set("Asia/Kolkata");
     }
     
-    public function show_movies()
-    {
+    public function show_movies() {
+
         $res = $this->db->query("SELECT * FROM Movies ORDER BY RAND() LIMIT 5");
         if ($res->num_rows > 0) {
             return $res;
@@ -20,8 +20,8 @@ class Functions
         }
     }
     
-    public function sortMovieAccordingToRatings($rate)
-    {
+    public function sortMovieAccordingToRatings($rate) {
+
         $res = $this->db->query("SELECT * FROM Movies WHERE rating>='$rate' ");
         if ($res->num_rows > 0) {
             return $res;
@@ -30,8 +30,8 @@ class Functions
         }
     }
     
-    public function sortMovieAccordingToGenres($genre)
-    {
+    public function sortMovieAccordingToGenres($genre) {
+
         $res = $this->db->query("SELECT * from movies where mid in 
                                         (select mid from movie_has_genres where gid in 
                                                 (select gid from genres where genre_type='$genre'));");
@@ -43,8 +43,8 @@ class Functions
         }
     }
     
-    public function sortMovieAccordingToYear($year)
-    {
+    public function sortMovieAccordingToYear($year) {
+
         $res = $this->db->query("SELECT * FROM Movies WHERE year='$year'");
         if ($res->num_rows > 0) {
             return $res;
@@ -53,8 +53,8 @@ class Functions
         }
     }
     
-    public function show_Actors()
-    {
+    public function show_Actors() {
+
         $res = $this->db->query("SELECT * FROM Actors ORDER BY RAND() LIMIT 12");
         if ($res->num_rows > 0) {
             return $res;
@@ -63,8 +63,8 @@ class Functions
         }
     }
     
-    public function show_Directors()
-    {
+    public function show_Directors() {
+
         $res = $this->db->query("SELECT * FROM Directors ORDER BY RAND() LIMIT 12");
         if ($res->num_rows > 0) {
             return $res;
@@ -73,17 +73,15 @@ class Functions
         }
     }
     
-    public function insert_movie($movie_name, $synopsis, $rating, $year, $gross, $duration, $cover_link, $torrent_link, $contributor)
-    {
+    public function insert_movie($movie_name, $synopsis, $rating, $year, $gross, $duration, $cover_link, $torrent_link, $contributor) {
         
         $res = $this->db->query("INSERT INTO Movies (movie_name,synopsis,rating,year,gross,duration,cover_link,torrent_link,contributor) 
         VALUES ('$movie_name','$synopsis','$rating','$year','$gross','$duration','$cover_link','$torrent_link','$contributor')");
         return $res;
     }
     
-    public function show_movie_actors($movie_id)
-    {
-        echo $movie_id;
+    public function show_movie_actors($movie_id) {
+
         $res = $this->db->query("SELECT * FROM Actors WHERE aid in (SELECT aid FROM movie_has_actors WHERE mid = '$movie_id')");
         if ($res->num_rows > 0)
             return $res;
@@ -91,8 +89,8 @@ class Functions
             return FALSE;
     }
     
-    public function show_movie_directors($movie_id)
-    {
+    public function show_movie_directors($movie_id) {
+
         $res = $this->db->query("SELECT * FROM Directors WHERE did in (SELECT did FROM movie_has_directors WHERE mid = '$movie_id')");
         if ($res->num_rows > 0)
             return $res;
@@ -101,24 +99,29 @@ class Functions
     }
 
     public function query_movies($query) {
+
         $str = '%'.$query.'%';
-        $res = $this->db->query("select * from movies where movie_name LIKE '$str'");
+        $res = $this->db->query("SELECT * FROM Movies WHERE movie_name LIKE '$str'");
         if ($res->num_rows > 0)
             return $res;
         else
             return FALSE;
     }
+
     public function query_actors($query) {
+
         $str = '%'.$query.'%';
-        $res = $this->db->query("select * from Actors where actor_name LIKE '$str'");
+        $res = $this->db->query("SELECT * FROM Actors WHERE actor_name LIKE '$str'");
         if ($res->num_rows > 0)
             return $res;
         else
             return FALSE;
     }
+
     public function query_directors($query) {
+
         $str = '%'.$query.'%';
-        $res = $this->db->query("select * from Directors where dir_name LIKE '$str'");
+        $res = $this->db->query("SELECT * FROM Directors WHERE dir_name LIKE '$str'");
         if ($res->num_rows > 0)
             return $res;
         else
