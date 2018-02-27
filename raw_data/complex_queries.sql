@@ -13,3 +13,14 @@ update directors set img_url="https://www.internet.asn.au/wp-content/uploads/201
 
 ALTER TABLE Actors MODIFY COLUMN img_url VARCHAR(200) DEFAULT "https://www.internet.asn.au/wp-content/uploads/2016/09/unknown-male-200x300.png";
 ALTER TABLE Directors MODIFY COLUMN img_url VARCHAR(200) DEFAULT "https://www.internet.asn.au/wp-content/uploads/2016/09/unknown-male-200x300.png";
+
+
+ALTER TABLE movie_has_directors ADD CONSTRAINT FK_movie_has_directors FOREIGN KEY (mid) REFERENCES Movies(mid) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE movie_has_directors ADD CONSTRAINT FK_movie_has_directors_2 FOREIGN KEY (did) REFERENCES Directors(did) ON UPDATE CASCADE ON DELETE CASCADE;
+
+ALTER TABLE movie_has_genres ADD CONSTRAINT FK_movie_has_genres FOREIGN KEY (mid) REFERENCES Movies(mid) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE movie_has_genres ADD CONSTRAINT FK_movie_has_genres_2 FOREIGN KEY (gid) REFERENCES Genres(gid) ON UPDATE CASCADE ON DELETE CASCADE;
+
+SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'movie_has_directors';
+
+SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'movies';
