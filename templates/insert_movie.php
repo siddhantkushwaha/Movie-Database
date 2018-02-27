@@ -41,6 +41,8 @@
             opacity: .6;
             background-image: url('collage.jpg');
             position: fixed;
+            top:0;
+            z-index: -10;
         }
         .inner-inner {
             position: relative;
