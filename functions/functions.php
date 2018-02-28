@@ -132,7 +132,7 @@ class Functions
 
         $res = $this->db->query("SELECT aid, did FROM movie_has_actors 
                                     INNER JOIN movie_has_directors ON movie_has_actors.mid = 
-                                        movie_has_directors.mid order by aid, did;");
+                                        movie_has_directors.mid ORDER BY RAND();");
         if ($res->num_rows > 0)
             return $res;
         else

@@ -56,7 +56,6 @@
                     <?php while($data = $r->fetch_assoc()) { ?>
                         <div class="my-card" style="width: 100%;">
                                 <img style="width: 100%; height: 100%;"  src="<?php echo $data["img_url"] ?>" alt="Card image cap">
-                                <!-- <span style="flex: 1 1 auto"></span><br> -->
                                 <div style="background: #fff; height: 200px;">
                                     <h4 class="card-title text-center" style="margin-top:10px;"><?php echo $data["actor_name"] ?></h4>
                                     <ul class="list-group list-group-flush">
