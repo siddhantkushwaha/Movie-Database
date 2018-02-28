@@ -12,7 +12,7 @@ class Functions
     
     public function show_movies() {
 
-        $res = $this->db->query("SELECT * FROM Movies ORDER BY RAND() LIMIT 5");
+        $res = $this->db->query("SELECT * FROM Movies ORDER BY RAND() LIMIT 20");
         if ($res->num_rows > 0) {
             return $res;
         } else {
@@ -55,7 +55,7 @@ class Functions
     
     public function show_Actors() {
 
-        $res = $this->db->query("SELECT * FROM Actors ORDER BY RAND() LIMIT 12");
+        $res = $this->db->query("SELECT * FROM Actors ORDER BY RAND() LIMIT 16");
         if ($res->num_rows > 0) {
             return $res;
         } else {
@@ -65,7 +65,7 @@ class Functions
     
     public function show_Directors() {
 
-        $res = $this->db->query("SELECT * FROM Directors ORDER BY RAND() LIMIT 12");
+        $res = $this->db->query("SELECT * FROM Directors ORDER BY RAND() LIMIT 16");
         if ($res->num_rows > 0) {
             return $res;
         } else {
@@ -126,6 +126,33 @@ class Functions
             return $res;
         else
             return FALSE;
+    }
+
+    public function directors_actors() {
+
+        $res = $this->db->query("SELECT aid, did FROM movie_has_actors 
+                                    INNER JOIN movie_has_directors ON movie_has_actors.mid = 
+                                        movie_has_directors.mid order by aid, did;");
+        if ($res->num_rows > 0)
+            return $res;
+        else
+            return FALSE;
+    }
+
+    public function get_actor_details($aid) {
+        $res = $this->db->query("SELECT * FROM Actors WHERE aid='$aid'");
+        if ($res->num_rows > 0)
+        return $res->fetch_assoc();
+            else
+        return FALSE;
+    }
+
+    public function get_dir_details($did) {
+        $res = $this->db->query("SELECT * FROM Directors WHERE did='$did'");
+        if ($res->num_rows > 0)
+        return $res->fetch_assoc();
+            else
+        return FALSE;
     }
 }
 $functions = new Functions();

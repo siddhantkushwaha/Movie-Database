@@ -27,7 +27,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary navbar-fixed-top">
     <a class="navbar-brand" href="/">Movie Base</a>
 </nav>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%;display: grid !important; grid-template-columns: 75% 25%;padding-right:7%;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%;display: grid !important; grid-template-columns: 65% 35%;padding-right:7%;">
     <form class="form-inline my-2 my-lg-0" method="GET" action="query.php">
         <input class="form-control mr-sm-2" style="width: 500px;" type="search" placeholder="Search By" aria-label="Search By" name="query">
         <input name="search_text" class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">
@@ -42,6 +42,9 @@
             </li>
             <li class="nav-item mr-1">
                 <a href="/index.php" style="color:white;padding:5px;"><button class="btn btn-success">Movies</button></a>
+            </li>
+            <li class="nav-item mr-1">
+                <a href="/collaborations.php" style="color:white;padding:5px;"><button class="btn btn-success">Collaborations</button></a>
             </li>
             <li class="nav-item mr-1">
                 <a href="/insert_movie.php" style="color:white;padding:5px;"><button class="btn btn-success">Add Movies</button></a>
